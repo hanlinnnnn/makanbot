@@ -1,0 +1,2 @@
+BREAKFAST_TIMES = [f"{hour}:{minute:02d}" for hour in range(7, 11) for minute in (0, 15, 30, 45) if not (hour == 10 and minute > 30)]
+DINNER_TIMES = [f"{hour}:{minute:02d}" for hour in range(17, 22) for minute in (0, 15, 30, 45) if not (hour == 21 and minute > 30) and not (hour == 17 and minute in (0, 15))]
