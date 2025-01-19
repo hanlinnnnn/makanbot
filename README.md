@@ -74,8 +74,8 @@ When breakfast times are displayed, the bot generates a well-formatted table sho
 
 ### Developer
 - **Li Han Lin**
-GitHub handle @hanlinnnnnn
-Passionate about solving everyday coordination challenges through technology.
+- GitHub handle @hanlinnnnnn
+- Passionate about solving everyday coordination challenges through technology.
 
 ### Tools and Frameworks
 - [Python](https://www.python.org/)  
