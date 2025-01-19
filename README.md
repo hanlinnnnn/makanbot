@@ -73,8 +73,7 @@ When breakfast times are displayed, the bot generates a well-formatted table sho
 ## Credits 🙌
 
 ### Developer
-- **Li Han Lin**
-- GitHub handle @hanlinnnnnn
+- **Li Han Lin** [GitHub handle @hanlinnnnnn](https://github.com/hanlinnnnnn)
 - Passionate about solving everyday coordination challenges through technology.
 
 ### Tools and Frameworks
