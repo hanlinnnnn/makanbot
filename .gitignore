@@ -1,0 +1,6 @@
+.env
+*.DS_Store
+*.pyc
+src/bot.log
+makanbot.pem
+__pycache__/

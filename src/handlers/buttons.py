@@ -36,6 +36,7 @@ async def button_commands(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if data == "choose_breakfast":
         keyboard = generate_keyboard(BREAKFAST_TIMES, user_selected_slots[user_id]["breakfast"], "toggle_breakfast")
         keyboard.append([
+            InlineKeyboardButton("Nah I'll pass", callback_data="pass_breakfast"),
             InlineKeyboardButton("Confirm", callback_data="confirm_breakfast"),
             InlineKeyboardButton("Cancel", callback_data="cancel")
         ])
@@ -47,6 +48,7 @@ async def button_commands(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data == "choose_dinner":
         keyboard = generate_keyboard(DINNER_TIMES, user_selected_slots[user_id]["dinner"], "toggle_dinner")
         keyboard.append([
+            InlineKeyboardButton("Nah I'll pass", callback_data="pass_dinner"),
             InlineKeyboardButton("Confirm", callback_data="confirm_dinner"),
             InlineKeyboardButton("Cancel", callback_data="cancel")
         ])
@@ -110,6 +112,26 @@ async def button_commands(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Dinner times confirmed: {', '.join(user_meal_times[user_id]['dinner_times'])}\nCheck out when others are dinzing! /dinz"
         )
         logger.info(f"User {username} ({user_id}) confirmed dinner times: {user_selected_slots[user_id]['dinner']}")
+
+    elif data == "pass_breakfast":
+        if user_id not in user_meal_times:
+            user_meal_times[user_id] = {"username": username, "breakfast_times": [], "dinner_times": []}
+
+        user_meal_times[user_id]["breakfast_times"] = ["None"]
+        await query.edit_message_text(
+            "You've chosen to not have breakfast with us. That's okay, let us know if you change your mind! "
+        )
+        logger.info(f"User {username} ({user_id}) chose to skip breakfast.")
+
+    elif data == "pass_dinner":
+        if user_id not in user_meal_times:
+            user_meal_times[user_id] = {"username": username, "breakfast_times": [], "dinner_times": []}
+
+        user_meal_times[user_id]["dinner_times"] = ["None"]
+        await query.edit_message_text(
+            "You've chosen to not have dinner with us. That's okay, let us know if you change your mind! "
+        )
+        logger.info(f"User {username} ({user_id}) chose to skip dinner.")
 
     elif data == "cancel":
         user_selected_slots[user_id] = {"breakfast": set(), "dinner": set()}
